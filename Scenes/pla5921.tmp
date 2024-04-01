@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbk44vc824ok5"]
+
+[ext_resource type="Texture2D" uid="uid://d0vmoxw2kpo8w" path="res://Sprites/car.png" id="1_k855b"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_pvsyp"]
+
+[node name="Player" type="Node2D"]
+position = Vector2(0, -2)
+script = ExtResource("1_pvsyp")
+max_speed_forward = null
+max_speed_reverse = null
+acceleration = null
+natural_deceleration = null
+braking_deceleration = null
+rotation_sensitivity = null
+base_rotation_value = null
+rotation_deceleration_factor = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 9)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_k855b")

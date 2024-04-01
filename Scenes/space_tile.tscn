@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://4qwl0wc6o0s2"]
+
+[ext_resource type="Texture2D" uid="uid://br5labwc5xady" path="res://Sprites/space.png" id="1_pknrm"]
+
+[node name="SpaceTile" type="Sprite2D"]
+z_index = -1
+texture = ExtResource("1_pknrm")

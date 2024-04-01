@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5n6wvtqsqqoa"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_723qe"]
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 64.0
+initial_velocity_max = 64.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 5.0
+hue_variation_min = -1.0
+hue_variation_max = -0.72
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_723qe")
+lifetime = 30.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.1
+trail_sections = 2
+trail_section_subdivisions = 2
