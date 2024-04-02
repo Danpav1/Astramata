@@ -6,6 +6,8 @@
 gravity_scale = 0.0
 max_contacts_reported = 10
 contact_monitor = true
+linear_damp_mode = 1
+angular_damp_mode = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-76, -91, -21, -84, 37, -68, 63, -66, 120, -40, 135, -15, 140, 20, 129, 39, 103, 62, 43, 91, -10, 101, -61, 99, -86, 87, -107, 50, -127, 21, -139, -28, -132, -56, -119, -73, -96, -88)

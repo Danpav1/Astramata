@@ -28,7 +28,7 @@ func _ready():
 	randomize()
 	spawn_player()
 	spawn_asteroids(amount_of_asteroids)
-	
+
 func _process(delta):
 	if Input.is_action_just_pressed(\"ui_escape\"):
 		escapeMenu()
@@ -40,12 +40,13 @@ func escapeMenu():
 		ui_layer.add_child(escape_menu)
 
 	if paused:
+		get_tree().paused = false
 		escape_menu.hide()
-		Engine.time_scale = 1
 	else:
-		
+		get_tree().paused = true
 		escape_menu.show()
-		Engine.time_scale = 0
+		escape_menu.focus()
+
 	paused = !paused
 	
 func spawn_player():
@@ -79,7 +80,7 @@ func spawn_asteroids(amount):
 			var direction = Vector2(1, 0).rotated(randf_range(0, 2 * PI))
 			new_asteroid.linear_velocity = direction * speed
 			new_asteroid.angular_velocity = randf_range(angular_velocity_range.x, angular_velocity_range.y)
-		new_asteroid.mass = 750 * asteroid_scale_factor
+		new_asteroid.mass = 7500 * asteroid_scale_factor
 		
 		add_child(new_asteroid)
 "

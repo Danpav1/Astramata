@@ -98,7 +98,7 @@ func handle_movement(delta):
 
 # Checks for and handles our firing
 func check_and_handle_fire():
-	if Input.is_action_pressed("ui_accept") and can_fire:
+	if Input.is_action_pressed("ui_space") and can_fire:
 		fire_bullet()
 
 # handles firing our cannon
@@ -171,6 +171,7 @@ func _on_body_entered(body):
 
 		if health <= 0:
 			queue_free()
+			await(5)
 			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 

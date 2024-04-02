@@ -1,6 +1,13 @@
 extends Control
 
-var keyboard_focused = null;
+@onready var keyboard_focused = $VBoxContainer/StartButton
+
+func _ready():
+	focus()
+
+# sets the curr keyboard_focused to focus
+func focus():
+	keyboard_focused.grab_focus()
 
 # start button pressed
 func _on_start_button_pressed():

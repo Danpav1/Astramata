@@ -1,12 +1,29 @@
 extends Control
 
-@onready var space = preload("res://Scenes/space.tscn")
-var keyboard_focused = null
+var space_instance
+@onready var keyboard_focused = $VBoxContainer/ResumeButton
+var paused = true
+
+func _ready():
+	space_instance = get_tree().current_scene
+	focus()
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_escape") and paused == true:
+		if space_instance and space_instance.has_method("escapeMenu"):
+			paused = false
+			space_instance.escapeMenu()
+	elif Input.is_action_just_pressed("ui_escape") and paused == false:
+		paused = true
+
+# sets the curr keyboard_focused to focus
+func focus():
+	keyboard_focused.grab_focus()
 
 # resume button
 func _on_resume_button_pressed():
-	var space_instance = get_tree().current_scene
 	if space_instance and space_instance.has_method("escapeMenu"):
+		paused = false
 		space_instance.escapeMenu()
 
 # resume button hovering

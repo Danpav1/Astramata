@@ -6,7 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f4n5l"]
 shader = ExtResource("2_maxkb")
-shader_parameter/blur_amount = 1.5
+shader_parameter/blur_amount = 2.5
 
 [sub_resource type="Shader" id="Shader_o1yc8"]
 code = "shader_type canvas_item;
@@ -35,6 +35,7 @@ shader = SubResource("Shader_o1yc8")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fldlh"]
 
 [node name="escape_menu" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

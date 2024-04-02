@@ -43,6 +43,7 @@ physics_material_override = SubResource("PhysicsMaterial_feje3")
 gravity_scale = 0.0
 max_contacts_reported = 10
 contact_monitor = true
+linear_damp_mode = 1
 script = ExtResource("1_pvsyp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
