@@ -1,19 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbk44vc824ok5"]
+[gd_scene load_steps=9 format=3 uid="uid://dbk44vc824ok5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pvsyp"]
 [ext_resource type="AudioStream" uid="uid://deaarvtwnb74u" path="res://Sounds/bullet_firing.wav" id="3_owgqh"]
 [ext_resource type="Texture2D" uid="uid://xu7ewjpbjbed" path="res://Sprites/spaceship_1.png" id="3_qg5te"]
 [ext_resource type="AudioStream" uid="uid://dr6a335onkkmj" path="res://Sounds/spaceship_engine.ogg" id="4_yasu6"]
 [ext_resource type="AudioStream" uid="uid://dlh5vfg0ag7wf" path="res://Sounds/space_impact.wav" id="5_od7a5"]
-[ext_resource type="Shader" path="res://Shaders/pixelated.gdshader" id="6_il3fk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_feje3"]
 friction = 0.0
 bounce = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5yhob"]
-shader = ExtResource("6_il3fk")
-shader_parameter/pixel_size = 4.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gkdqi"]
 particle_flag_disable_z = true
@@ -50,28 +45,15 @@ max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("1_pvsyp")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Pixelation" type="ColorRect" parent="CanvasLayer"]
-visible = false
-material = SubResource("ShaderMaterial_5yhob")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -1.0
-offset_right = -2.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 3.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1, 1.43051e-06)
+polygon = PackedVector2Array(67, 2, 42, 7, 25, 9, 22, 17, 17, 18, 14, 21, 7, 20, -3, 66, 3, 69, -4, 70, -28, 67, -29, 64, -18, 64, -28, 21, -50, 48, -62, 47, -54, 20, -65, 17, -66, 9, -60, 5, -66, 1, -59, -5, -64, -4, -66, -12, -63, -17, -52, -19, -62, -46, -51, -47, -29, -21, -18, -64, -30, -65, -21, -67, 4, -68, -3, -66, 7, -21, 16, -19, 24, -17, 23, -8, 45, -7, 67, -2)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 rotation = -1.5708
@@ -128,24 +110,7 @@ volume_db = -25.0
 stream = ExtResource("4_yasu6")
 volume_db = -15.0
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-visible = false
-modulate = Color(1, 1, 0, 1)
-clip_children = 2
-offset_left = -37.0
-offset_top = -3.0
-offset_right = 8.0
-offset_bottom = 6.0
-max_value = 1.0
-value = 1.0
-show_percentage = false
-metadata/_edit_use_anchors_ = true
-
 [node name="AudioStreamPlayer2D_Collision" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_od7a5")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-1, 1.43051e-06)
-polygon = PackedVector2Array(67, 2, 42, 7, 25, 9, 22, 17, 17, 18, 14, 21, 7, 20, -3, 66, 3, 69, -4, 70, -28, 67, -29, 64, -18, 64, -28, 21, -50, 48, -62, 47, -54, 20, -65, 17, -66, 9, -60, 5, -66, 1, -59, -5, -64, -4, -66, -12, -63, -17, -52, -19, -62, -46, -51, -47, -29, -21, -18, -64, -30, -65, -21, -67, 4, -68, -3, -66, 7, -21, 16, -19, 24, -17, 23, -8, 45, -7, 67, -2)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -36,14 +36,14 @@ func _process(delta):
 func escapeMenu():
 	if not escape_menu:
 		escape_menu = escape_menu_scene.instantiate()
-		# Assuming the CanvasLayer is named 'UILayer', change according to your setup
-		var ui_layer = get_node(\"/root/space/UILayer\")  # Adjust the path as necessary
-		ui_layer.add_child(escape_menu)  # Add the escape menu to the UI layer
+		var ui_layer = get_node(\"/root/space/UILayer\")
+		ui_layer.add_child(escape_menu)
 
 	if paused:
 		escape_menu.hide()
 		Engine.time_scale = 1
 	else:
+		
 		escape_menu.show()
 		Engine.time_scale = 0
 	paused = !paused

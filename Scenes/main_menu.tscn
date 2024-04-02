@@ -1,8 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://futataf4lf7e"]
+[gd_scene load_steps=11 format=3 uid="uid://futataf4lf7e"]
 
-[ext_resource type="Script" path="res://Scenes/menu.gd" id="1_lga48"]
-[ext_resource type="Texture2D" uid="uid://br5labwc5xady" path="res://Sprites/space.png" id="2_tf2at"]
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_lga48"]
+[ext_resource type="Texture2D" uid="uid://dh17jyohvvdnx" path="res://Sprites/main_menu_background.png" id="2_a56yq"]
 [ext_resource type="Texture2D" uid="uid://durbvhgdgv557" path="res://Sprites/astromata.png" id="3_uf0vs"]
+[ext_resource type="FontFile" uid="uid://w70gpuk73i8n" path="res://Resources/m5x7.ttf" id="4_hgeos"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rn2pc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fihf2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1iue2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o47r0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_odhkj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dvcr"]
 
 [node name="mainMenu" type="Control"]
 layout_mode = 3
@@ -17,18 +30,17 @@ script = ExtResource("1_lga48")
 layout_mode = 0
 offset_right = 1919.0
 offset_bottom = 1080.0
-texture = ExtResource("2_tf2at")
-stretch_mode = 1
+texture = ExtResource("2_a56yq")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Astromata" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -182.0
-offset_top = 314.0
-offset_right = 190.0
-offset_bottom = 414.0
+offset_left = -436.0
+offset_top = 60.0
+offset_right = 441.0
+offset_bottom = 369.0
 grow_horizontal = 2
 texture = ExtResource("3_uf0vs")
 
@@ -39,10 +51,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -219.0
-offset_top = -74.0
-offset_right = 220.0
-offset_bottom = 36.0
+offset_left = -124.0
+offset_top = -157.0
+offset_right = 124.0
+offset_bottom = 157.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -50,21 +62,57 @@ grow_vertical = 2
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../OptionsButton")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("4_hgeos")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rn2pc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fihf2")
 text = "Start"
+flat = true
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("4_hgeos")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1iue2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o47r0")
 text = "Options"
+flat = true
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../StartButton")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("4_hgeos")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxEmpty_odhkj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2dvcr")
 text = "Quit
 "
+flat = true
 
+[connection signal="focus_entered" from="VBoxContainer/StartButton" to="." method="_on_start_button_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

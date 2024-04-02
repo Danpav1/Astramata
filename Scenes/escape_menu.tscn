@@ -1,7 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://btbfx1lf2d3em"]
+[gd_scene load_steps=10 format=3 uid="uid://btbfx1lf2d3em"]
 
-[ext_resource type="Script" path="res://Scenes/escape_menu.gd" id="1_t5bw2"]
-[ext_resource type="Texture2D" uid="uid://br5labwc5xady" path="res://Sprites/space.png" id="2_67lqp"]
+[ext_resource type="Script" path="res://Scripts/escape_menu.gd" id="1_ackmh"]
+[ext_resource type="Shader" path="res://Shaders/simple_blur.gdshader" id="2_maxkb"]
+[ext_resource type="FontFile" uid="uid://w70gpuk73i8n" path="res://Resources/m5x7.ttf" id="3_isw43"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4n5l"]
+shader = ExtResource("2_maxkb")
+shader_parameter/blur_amount = 1.5
+
+[sub_resource type="Shader" id="Shader_o1yc8"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_264eg"]
+shader = SubResource("Shader_o1yc8")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wq1fp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jw2l7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fldlh"]
 
 [node name="escape_menu" type="Control"]
 layout_mode = 3
@@ -10,14 +41,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_t5bw2")
+script = ExtResource("1_ackmh")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1919.0
-offset_bottom = 1080.0
-texture = ExtResource("2_67lqp")
-stretch_mode = 1
+[node name="Blur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_f4n5l")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -26,32 +59,66 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -219.0
-offset_top = -74.0
-offset_right = 220.0
-offset_bottom = 36.0
+offset_left = -124.0
+offset_top = -136.0
+offset_right = 124.0
+offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_264eg")
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../OptionsButton")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_isw43")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wq1fp")
 text = "Resume"
+flat = true
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../ResumeButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_isw43")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jw2l7")
 text = "Options"
+flat = true
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../ResumeButton")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_isw43")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fldlh")
 text = "Quit
 "
+flat = true
 
+[connection signal="focus_entered" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
