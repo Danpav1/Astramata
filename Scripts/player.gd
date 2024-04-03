@@ -5,7 +5,7 @@ extends RigidBody2D
 @onready var audio_player_collision = $AudioStreamPlayer2D_Collision
 @onready var camera = $Camera2D
 
-var max_health = 1000
+var max_health = 100
 var max_speed = 500
 var acceleration = 5000
 var rotation_speed = 2.5
@@ -23,6 +23,8 @@ var zoom_level = 1.0
 var can_fire = true
 var bullet = preload("res://Scenes/bullet.tscn")
 var collision_particles = preload("res://Scenes/collisionParticles.tscn")
+var main_scene = preload("res://Scenes/main.tscn")
+var main_instance
 
 var collision_sounds = [
 	preload("res://Sounds/space_impact.wav"),
@@ -32,6 +34,7 @@ var collision_sounds = [
 
 # Called when the scene is first instantiated
 func _ready():
+	main_instance = main_scene
 	audio_player_engine.connect("finished", Callable(self, "_on_loop_sound").bind(audio_player_engine))
 	audio_player_engine.play()
 
@@ -171,7 +174,5 @@ func _on_body_entered(body):
 
 		if health <= 0:
 			queue_free()
-			await(5)
-			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-
-
+			get_parent().death_screen.show()
+			

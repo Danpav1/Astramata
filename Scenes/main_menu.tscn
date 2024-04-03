@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://futataf4lf7e"]
+[gd_scene load_steps=12 format=3 uid="uid://futataf4lf7e"]
 
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_lga48"]
-[ext_resource type="Texture2D" uid="uid://dh17jyohvvdnx" path="res://Sprites/main_menu_background.png" id="2_a56yq"]
+[ext_resource type="Shader" path="res://Shaders/simple_blur.gdshader" id="2_6at10"]
 [ext_resource type="Texture2D" uid="uid://durbvhgdgv557" path="res://Sprites/astromata.png" id="3_uf0vs"]
-[ext_resource type="FontFile" uid="uid://w70gpuk73i8n" path="res://Resources/m5x7.ttf" id="4_hgeos"]
+[ext_resource type="FontFile" uid="uid://w70gpuk73i8n" path="res://Resources/Fonts/m5x7.ttf" id="4_byby0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ohe0"]
+shader = ExtResource("2_6at10")
+shader_parameter/blur_amount = 2.5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rn2pc"]
 
@@ -24,13 +28,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 script = ExtResource("1_lga48")
+metadata/_edit_use_anchors_ = true
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1919.0
-offset_bottom = 1080.0
-texture = ExtResource("2_a56yq")
+[node name="Blur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_1ohe0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Astromata" type="TextureRect" parent="."]
 layout_mode = 1
@@ -38,9 +48,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -436.0
-offset_top = 60.0
+offset_top = 52.0
 offset_right = 441.0
-offset_bottom = 369.0
+offset_bottom = 361.0
 grow_horizontal = 2
 texture = ExtResource("3_uf0vs")
 
@@ -67,7 +77,7 @@ theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("4_hgeos")
+theme_override_fonts/font = ExtResource("4_byby0")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/hover = SubResource("StyleBoxEmpty_rn2pc")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fihf2")
@@ -83,7 +93,7 @@ theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("4_hgeos")
+theme_override_fonts/font = ExtResource("4_byby0")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1iue2")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o47r0")
@@ -99,7 +109,7 @@ theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("4_hgeos")
+theme_override_fonts/font = ExtResource("4_byby0")
 theme_override_font_sizes/font_size = 100
 theme_override_styles/hover = SubResource("StyleBoxEmpty_odhkj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2dvcr")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/escape_menu.gd" id="1_ackmh"]
 [ext_resource type="Shader" path="res://Shaders/simple_blur.gdshader" id="2_maxkb"]
-[ext_resource type="FontFile" uid="uid://w70gpuk73i8n" path="res://Resources/m5x7.ttf" id="3_isw43"]
+[ext_resource type="FontFile" uid="uid://w70gpuk73i8n" path="res://Resources/Fonts/m5x7.ttf" id="3_isw43"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f4n5l"]
 shader = ExtResource("2_maxkb")
@@ -34,8 +34,8 @@ shader = SubResource("Shader_o1yc8")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fldlh"]
 
-[node name="escape_menu" type="Control"]
-process_mode = 2
+[node name="pause_menu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

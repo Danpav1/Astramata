@@ -36,7 +36,7 @@ gravity = Vector3(0, 0, 0)
 color = Color(1, 0.615686, 0.0666667, 1)
 
 [node name="Player" type="RigidBody2D" groups=["player"]]
-position = Vector2(0, -1.43051e-06)
+position = Vector2(640, 360)
 disable_mode = 2
 mass = 2000.0
 physics_material_override = SubResource("PhysicsMaterial_feje3")
@@ -47,6 +47,7 @@ linear_damp_mode = 1
 script = ExtResource("1_pvsyp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1, -0.155)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 rotation_smoothing_enabled = true
