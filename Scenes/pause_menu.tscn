@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://btbfx1lf2d3em"]
+[gd_scene load_steps=11 format=3 uid="uid://btbfx1lf2d3em"]
 
 [ext_resource type="Script" path="res://Scripts/escape_menu.gd" id="1_ackmh"]
 [ext_resource type="Shader" path="res://Shaders/simple_blur.gdshader" id="2_maxkb"]
@@ -32,6 +32,8 @@ shader = SubResource("Shader_o1yc8")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jw2l7"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2r75b"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fldlh"]
 
 [node name="pause_menu" type="Control"]
@@ -60,10 +62,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -124.0
-offset_top = -136.0
-offset_right = 124.0
-offset_bottom = 136.0
+offset_left = -174.0
+offset_top = -142.0
+offset_right = 174.0
+offset_bottom = 222.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -86,7 +88,7 @@ flat = true
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../ResumeButton")
-focus_neighbor_bottom = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../MainMenuButton")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
@@ -98,9 +100,24 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_jw2l7")
 text = "Options"
 flat = true
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_isw43")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2r75b")
+text = "Main Menu"
+flat = true
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../MainMenuButton")
 focus_neighbor_bottom = NodePath("../ResumeButton")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
@@ -120,6 +137,9 @@ flat = true
 [connection signal="focus_entered" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_focus_entered"]
 [connection signal="mouse_entered" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="focus_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_focus_entered"]
 [connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

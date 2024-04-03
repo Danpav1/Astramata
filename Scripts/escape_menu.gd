@@ -66,3 +66,17 @@ func _on_quit_button_mouse_entered():
 # quit button focused
 func _on_quit_button_focus_entered():
 	focused_button = $VBoxContainer/QuitButton
+
+
+# main menu button
+func _on_main_menu_button_pressed():
+	main_instance.get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	
+# main menu button hovering
+func _on_main_menu_button_mouse_entered():
+	$VBoxContainer/MainMenuButton.grab_focus()
+
+# main menu button focused
+func _on_main_menu_button_focus_entered():
+	focused_button = $VBoxContainer/MainMenuButton

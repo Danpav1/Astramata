@@ -27,15 +27,15 @@ func _on_respawn_button_focus_entered():
 
 
 
-# options button
+# main menu button
 func _on_main_menu_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/main.tscn")
 	
-# options button hovering
+# main menu button hovering
 func _on_main_menu_button_mouse_entered():
 	$VBoxContainer/MainMenuButton.grab_focus()
 
-# options button focused
+# main menu button focused
 func _on_main_menu_button_focus_entered():
 	focused_button = $VBoxContainer/MainMenuButton
 

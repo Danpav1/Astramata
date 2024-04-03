@@ -19,7 +19,7 @@ var main_menu_scene = preload(\"res://Scenes/main_menu.tscn\")
 var death_screen_scene = preload(\"res://Scenes/death_screen.tscn\")
 
 var asteroid_scales = [0.25, 0.5, 1, 2]
-var amount_of_asteroids = 100
+var amount_of_asteroids = 250
 var linear_velocity_range = Vector2(10, 100)  # Min and max speeds for spawning asteroids
 var angular_velocity_range = Vector2(0, 2 * PI)  # Min and max rotation speeds in radians for spawning asteroids
 var viewRange = 2750  # How far from the player tiles should be generated.
