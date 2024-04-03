@@ -175,4 +175,5 @@ func _on_body_entered(body):
 		if health <= 0:
 			queue_free()
 			get_parent().death_screen.show()
+			get_parent().death_screen.focus()
 			

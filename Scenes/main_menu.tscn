@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://futataf4lf7e"]
 
-[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_lga48"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_wabw3"]
 [ext_resource type="Shader" path="res://Shaders/simple_blur.gdshader" id="2_6at10"]
 [ext_resource type="Texture2D" uid="uid://durbvhgdgv557" path="res://Sprites/astromata.png" id="3_uf0vs"]
 [ext_resource type="FontFile" uid="uid://w70gpuk73i8n" path="res://Resources/Fonts/m5x7.ttf" id="4_byby0"]
@@ -30,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
-script = ExtResource("1_lga48")
+script = ExtResource("1_wabw3")
 metadata/_edit_use_anchors_ = true
 
 [node name="Blur" type="ColorRect" parent="."]

@@ -30,13 +30,11 @@ var death_screen = null
 
 func _ready():
 	init_pause_menu()
-	init_main_menu()
 	init_death_screen()
+	init_main_menu()
 	randomize()
 	spawn_asteroids(amount_of_asteroids)
-	
-func _on_request_spawn_player():
-	spawn_player()
+	add_to_group(\"game_control\")
 
 func init_main_menu():
 	main_menu = main_menu_scene.instantiate()

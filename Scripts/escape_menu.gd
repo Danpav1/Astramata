@@ -1,10 +1,11 @@
 extends Control
 
 var main_instance
-@onready var focused_button = $VBoxContainer/ResumeButton
+var focused_button
 var paused = false
 
 func _ready():
+	focused_button = $VBoxContainer/ResumeButton
 	main_instance = get_tree().current_scene
 	focus()
 
@@ -21,7 +22,8 @@ func _process(delta):
 
 # sets the curr keyboard_focused to focus
 func focus():
-	focused_button.grab_focus()
+	if is_instance_valid(focused_button):
+		focused_button.grab_focus()
 
 # resume button
 func _on_resume_button_pressed():
@@ -41,7 +43,7 @@ func _on_resume_button_focus_entered():
 
 # options button
 func _on_options_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	pass
 	
 # options button hovering
 func _on_options_button_mouse_entered():
