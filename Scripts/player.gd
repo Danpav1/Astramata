@@ -5,7 +5,9 @@ extends RigidBody2D
 @onready var audio_player_collision = $AudioStreamPlayer2D_Collision
 @onready var camera = $Camera2D
 
-var max_health = 1000
+signal player_died
+
+var max_health = 100
 var max_speed = 500
 var acceleration = 5000
 var rotation_speed = 2.5
@@ -173,7 +175,5 @@ func _on_body_entered(body):
 			particles_instance.emitting = true  # Start emitting particles
 
 		if health <= 0:
-			queue_free()
-			get_parent().death_screen.show()
-			get_parent().death_screen.focus()
+			emit_signal("player_died")
 			

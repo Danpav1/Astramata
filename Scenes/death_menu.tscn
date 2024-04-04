@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://bri1uhfqbd836"]
+
+[ext_resource type="Script" path="res://Scripts/death_screen.gd" id="1_1apg3"]
+[ext_resource type="Shader" path="res://Shaders/simple_blur.gdshader" id="2_umfi4"]
+[ext_resource type="FontFile" uid="uid://w70gpuk73i8n" path="res://Resources/Fonts/m5x7.ttf" id="3_rt5d6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xgtvf"]
+shader = ExtResource("2_umfi4")
+shader_parameter/blur_amount = 2.5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jai4k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ko6kd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vo1gd"]
+
+[node name="death_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1apg3")
+
+[node name="Blur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_xgtvf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -136.0
+offset_right = 174.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RespawnButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_rt5d6")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jai4k")
+text = "Respawn"
+flat = true
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_rt5d6")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ko6kd")
+text = "Main Menu"
+flat = true
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_rt5d6")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vo1gd")
+text = "Quit
+"
+flat = true
+
+[connection signal="focus_entered" from="VBoxContainer/RespawnButton" to="." method="_on_respawn_button_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/RespawnButton" to="." method="_on_respawn_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/RespawnButton" to="." method="_on_respawn_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

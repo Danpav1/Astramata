@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cmfldddcefddq"]
 
 [ext_resource type="FontFile" uid="uid://w70gpuk73i8n" path="res://Resources/Fonts/m5x7.ttf" id="1_34wuq"]
+[ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_fnhyq"]
 [ext_resource type="Shader" path="res://Shaders/simple_blur.gdshader" id="1_jloor"]
-[ext_resource type="Script" path="res://Scenes/options_menu.gd" id="1_m4uan"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gfcln"]
 shader = ExtResource("1_jloor")
@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_m4uan")
+script = ExtResource("1_fnhyq")
 
 [node name="Blur" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_gfcln")
@@ -76,7 +76,8 @@ text = "SFX"
 layout_mode = 2
 size_flags_vertical = 2
 tooltip_text = "Main Volume"
-value = 50.0
+step = 10.0
+tick_count = 1
 
 [node name="ApplyButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -105,6 +106,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_61wq2")
 text = "Back"
 flat = true
 
+[connection signal="changed" from="VBoxContainer/SFX_Slider" to="." method="_on_sfx_slider_changed"]
 [connection signal="focus_entered" from="VBoxContainer/ApplyButton" to="." method="_on_apply_button_focus_entered"]
 [connection signal="mouse_entered" from="VBoxContainer/ApplyButton" to="." method="_on_apply_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/ApplyButton" to="." method="_on_apply_button_pressed"]
