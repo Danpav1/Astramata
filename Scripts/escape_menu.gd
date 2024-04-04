@@ -40,18 +40,18 @@ func _on_resume_button_mouse_entered():
 func _on_resume_button_focus_entered():
 	focused_button = $VBoxContainer/ResumeButton
 
-
+func show_pause_menu():
+	show()
+	
 
 # options button
 func _on_options_button_pressed():
-	main_instance.get_tree().paused = true
-	paused = true
 	hide()
+	get_tree().call_group("options_menu", "set_back_destination", "pause_menu")
 	get_tree().call_group("options_menu", "show_options")
 	get_tree().call_group("options_menu", "focus")
 	
-	
-	
+
 # options button hovering
 func _on_options_button_mouse_entered():
 	$VBoxContainer/OptionsButton.grab_focus()
@@ -79,8 +79,7 @@ func _on_quit_button_focus_entered():
 # main menu button
 func _on_main_menu_button_pressed():
 	main_instance.get_tree().paused = false
-	hide()
-	get_tree().call_group("main_menu", "show_main_menu")
+	get_tree().change_scene_to_file("res://Scenes/main.tscn")
 	
 # main menu button hovering
 func _on_main_menu_button_mouse_entered():

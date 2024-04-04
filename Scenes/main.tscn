@@ -31,9 +31,9 @@ var options_menu = null
 var death_screen = null
 
 func _ready():
-	init_pause_menu()
 	init_death_screen()
 	init_options_screen()
+	init_pause_menu()
 	init_main_menu()
 	randomize()
 	spawn_asteroids(amount_of_asteroids)
@@ -41,24 +41,24 @@ func _ready():
 
 func init_main_menu():
 	main_menu = main_menu_scene.instantiate()
-	var ui_layer = get_node(\"/root/main/UILayer\")
+	var ui_layer = get_node(\"/root/main/CanvasLayerMainMenu\")
 	ui_layer.add_child(main_menu)
 
 func init_options_screen():
 	options_menu = options_menu_scene.instantiate()
-	var ui_layer = get_node(\"/root/main/UILayer\")
+	var ui_layer = get_node(\"/root/main/CanvasLayerOptionsMenu\")
 	ui_layer.add_child(options_menu)
 	options_menu.hide()
 
 func init_pause_menu():
 	pause_menu = pause_menu_scene.instantiate()
-	var ui_layer = get_node(\"/root/main/UILayer\")
+	var ui_layer = get_node(\"/root/main/CanvasLayerPauseMenu\")
 	ui_layer.add_child(pause_menu)
 	pause_menu.hide()
 	
 func init_death_screen():
 	death_screen = death_screen_scene.instantiate()
-	var ui_layer = get_node(\"/root/main/UILayer\")
+	var ui_layer = get_node(\"/root/main/CanvasLayerDeathScreen\")
 	ui_layer.add_child(death_screen)
 	death_screen.hide()
 
@@ -1097,7 +1097,13 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="UILayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayerMainMenu" type="CanvasLayer" parent="."]
+
+[node name="CanvasLayerPauseMenu" type="CanvasLayer" parent="."]
+
+[node name="CanvasLayerDeathScreen" type="CanvasLayer" parent="."]
+
+[node name="CanvasLayerOptionsMenu" type="CanvasLayer" parent="."]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

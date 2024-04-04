@@ -41,7 +41,9 @@ func _on_start_button_focus_entered():
 # options button pressed
 func _on_options_button_pressed():
 	hide()
+	get_tree().call_group("options_menu", "set_back_destination", "main_menu")
 	get_tree().call_group("options_menu", "show_options")
+	get_tree().call_group("options_menu", "focus")
 
 # options button hovering
 func _on_options_button_mouse_entered():
