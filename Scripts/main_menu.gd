@@ -8,30 +8,21 @@ var accumulated_time = 0.0
 var start_blur_animation = false  # Flag to control when the blur animation should run
 
 func _ready():
+	add_to_group("main_menu")
 	main_instance = get_tree().current_scene
 	focused_button = $VBoxContainer/StartButton
 	focus()
 
-func _process(delta):
-	if start_blur_animation:  # Check if the blur animation should run
-		accumulated_time += delta
 
-		if blur_current != 0 and accumulated_time >= 0.05:
-			$Astromata.hide()
-			$VBoxContainer.hide()
-			accumulated_time = 0  # Reset the timer
-			blur_current -= 0.1  # Decrease blur amount
-			var material = $Blur.material as ShaderMaterial
-			material.set_shader_parameter("blur_amount", blur_current)
-		
-		if blur_current <= 0:  # Check if the blur animation is done
-			start_blur_animation = false  # Stop the blur animation
-			hide()
+
+func show_main_menu():
+	show()
 
 # Start the blur animation when the start button is pressed
 func _on_start_button_pressed():
 	main_instance.spawn_player()
-	start_blur_animation = true
+	hide()
+	#start_blur_animation = true
 
 # sets the curr focused_button to focus
 func focus():
@@ -49,7 +40,8 @@ func _on_start_button_focus_entered():
 	
 # options button pressed
 func _on_options_button_pressed():
-	pass
+	hide()
+	get_tree().call_group("options_menu", "show_options")
 
 # options button hovering
 func _on_options_button_mouse_entered():

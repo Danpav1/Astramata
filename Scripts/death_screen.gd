@@ -6,6 +6,7 @@ var paused = false
 func _ready():
 	focused_button = $VBoxContainer/RespawnButton
 	focus()
+	add_to_group("death_screen")
 
 # sets the curr keyboard_focused to focus
 func focus():

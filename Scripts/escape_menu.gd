@@ -8,6 +8,7 @@ func _ready():
 	focused_button = $VBoxContainer/ResumeButton
 	main_instance = get_tree().current_scene
 	focus()
+	add_to_group("pause_menu")
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_escape") and paused == true:
@@ -29,7 +30,7 @@ func focus():
 func _on_resume_button_pressed():
 	paused = false
 	main_instance.get_tree().paused = false
-	self.hide()
+	hide()
 
 # resume button hovering
 func _on_resume_button_mouse_entered():
@@ -43,7 +44,13 @@ func _on_resume_button_focus_entered():
 
 # options button
 func _on_options_button_pressed():
-	pass
+	main_instance.get_tree().paused = true
+	paused = true
+	hide()
+	get_tree().call_group("options_menu", "show_options")
+	get_tree().call_group("options_menu", "focus")
+	
+	
 	
 # options button hovering
 func _on_options_button_mouse_entered():
@@ -68,10 +75,12 @@ func _on_quit_button_focus_entered():
 	focused_button = $VBoxContainer/QuitButton
 
 
+
 # main menu button
 func _on_main_menu_button_pressed():
 	main_instance.get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	hide()
+	get_tree().call_group("main_menu", "show_main_menu")
 	
 # main menu button hovering
 func _on_main_menu_button_mouse_entered():

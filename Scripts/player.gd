@@ -5,7 +5,7 @@ extends RigidBody2D
 @onready var audio_player_collision = $AudioStreamPlayer2D_Collision
 @onready var camera = $Camera2D
 
-var max_health = 100
+var max_health = 1000
 var max_speed = 500
 var acceleration = 5000
 var rotation_speed = 2.5
