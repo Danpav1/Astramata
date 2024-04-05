@@ -26,5 +26,6 @@ To get started with Astromata, ensure you have the following prerequisites:
 - [ ] Figure out what the games core objective and mechanics will be
 - [x] Add basic UI (main menu, pause menu, death menu and options menu)
 - [ ] Make the options menu volume sliders and apply button actually work
+- [x] Use composition with audio by extracting all audio to an audio controller
       
 
