@@ -24,4 +24,7 @@ To get started with Astromata, ensure you have the following prerequisites:
 - [ ] Overhaul the players ship have a death animation, break apart into multiple pieces, particles.
 - [ ] Overhaul asteroids completely. New textures, animations, spawning, allow them to break apart, particles, etc
 - [ ] Figure out what the games core objective and mechanics will be
+- [x] Add basic UI (main menu, pause menu, death menu and options menu)
+- [ ] Make the options menu volume sliders and apply button actually work
+      
 
