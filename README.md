@@ -1,12 +1,12 @@
 # Astromata
 
-Welcome to **Astromata**, a game developed using the Godot 4 engine. Astromata is a work in progress.
+Welcome to **Astromata**, a game developed using the Godot 4.2.1 engine. Astromata is a work in progress.
 
 ## Getting Started
 
 To get started with Astromata, ensure you have the following prerequisites:
 
-- Godot Engine 4.2 installed on your system. Download it from [Godot's official website](https://godotengine.org/download).
+- Godot Engine 4.2.1 installed on your system. Download it from [Godot's official website](https://godotengine.org/download).
 - Basic understanding of Godot's GDScript for easier navigation through the project.
 
 ### Installation
