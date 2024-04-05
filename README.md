@@ -18,7 +18,7 @@ To get started with Astromata, ensure you have the following prerequisites:
 
 ## To-Do List
 
-- [ ] Reorganize files and put them in their own respective folders
+- [x] Reorganize files and put them in their own respective folders
 - [ ] Incorporate multiplayer & singleplayer
 - [ ] Update the sounds
 - [ ] Overhaul the players ship have a death animation, break apart into multiple pieces, particles.
