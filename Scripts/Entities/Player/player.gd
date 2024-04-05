@@ -1,12 +1,10 @@
 extends RigidBody2D
 
-@onready var audio_player_cannon = $AudioStreamPlayer2D_Cannon
-@onready var audio_player_collision = $AudioStreamPlayer2D_Collision
 @onready var camera = $Camera2D
 
 signal player_died
 
-var max_health = 100
+var max_health = 2000
 var max_speed = 500
 var acceleration = 5000
 var rotation_speed = 2.5
@@ -32,6 +30,9 @@ var collision_sounds = [
 	preload("res://Assets/Sounds/SFX/space_impact2.wav"),
 	preload("res://Assets/Sounds/SFX/space_impact3.wav")
 ]
+
+@export var cannonStream: AudioStream
+@export var collisionStream: AudioStream
 
 # Called when the scene is first instantiated
 func _ready():
@@ -106,8 +107,7 @@ func check_and_handle_fire():
 
 # handles firing our cannon
 func fire_bullet():
-	audio_player_cannon.play()
-	audio_player_cannon.play()
+	AudioController.play_player_sfx(cannonStream, self.get_global_position())
 	
 	var bullet_instance1 = bullet.instantiate()
 	var bullet_instance2 = bullet.instantiate()
@@ -147,10 +147,7 @@ func update_audio_pitch():
 
 # plays a random sound from the collision_sounds array
 func play_random_collision_sound():
-	var random_index = randi() % collision_sounds.size()
-	# Set the stream to a random sound
-	audio_player_collision.stream = collision_sounds[random_index]
-	audio_player_collision.play()
+	AudioController.play_player_sfx(collisionStream, self.get_global_position())
 	
 # Called whenever something touches our collision polygon(s)
 func _on_body_entered(body):

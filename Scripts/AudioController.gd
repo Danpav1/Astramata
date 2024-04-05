@@ -7,13 +7,28 @@ var sfx_volume_db: float
 func _ready():
 	load_settings()
 
-func play_sfx(stream: AudioStream):
+func play_ui_sfx(stream: AudioStream):
 	var instance = AudioStreamPlayer2D.new()
 	instance.stream = stream
 	instance.finished.connect(remove_node.bind(instance))
 	instance.volume_db = sfx_volume_db
 	add_child(instance)
 	instance.play()
+	
+func play_player_sfx(stream: AudioStream, position: Vector2):
+	var instance = AudioStreamPlayer2D.new()
+	instance.global_position = position
+	instance.stream = stream
+	instance.finished.connect(remove_node.bind(instance))
+	instance.volume_db = sfx_volume_db
+	add_child(instance)
+	instance.play()
+	
+func play_looping_sfx(stream: AudioStream):
+	pass
+	
+func end_looping_sfx(stream: AudioStream):
+	stream.queue_free()
 	
 func remove_node(instance: AudioStreamPlayer2D):
 	instance.queue_free()
