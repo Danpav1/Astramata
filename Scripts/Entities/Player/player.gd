@@ -25,18 +25,21 @@ var collision_particles = preload("res://Scenes/Gameplay/Particles/collisionPart
 var main_scene = preload("res://Scenes/main.tscn")
 var main_instance
 
-var collision_sounds = [
-	preload("res://Assets/Sounds/SFX/space_impact.wav"),
-	preload("res://Assets/Sounds/SFX/space_impact2.wav"),
-	preload("res://Assets/Sounds/SFX/space_impact3.wav")
-]
-
 @export var cannonStream: AudioStream
 @export var collisionStream: AudioStream
+
+@onready var audio_player_engine = $AudioStreamPlayer2D_Engine
 
 # Called when the scene is first instantiated
 func _ready():
 	main_instance = main_scene
+	audio_player_engine.connect("finished", Callable(self, "_on_loop_sound").bind(audio_player_engine))
+	audio_player_engine.play()
+
+# indefinitely loops whatever audio player is given to it
+func _on_loop_sound(player):
+	player.stream_paused = false
+	player.play()
 
 # Makes sure we're at the correct pixel size and camera zoom level, called every frame update
 # (16 per sec)
@@ -50,7 +53,6 @@ func _physics_process(delta):
 	handle_rotation(delta)
 	handle_movement(delta)
 	update_audio_pitch()
-	#AudioController.set_engine_sound_player_position(self.get_global_position())
 
 # Applies pixelate shader
 func pixelate(delta):
@@ -107,7 +109,7 @@ func check_and_handle_fire():
 
 # handles firing our cannon
 func fire_bullet():
-	AudioController.play_player_sfx(cannonStream, self.get_global_position())
+	AudioController.play_positional_sfx(cannonStream, self.get_global_position())
 	
 	var bullet_instance1 = bullet.instantiate()
 	var bullet_instance2 = bullet.instantiate()
@@ -130,24 +132,17 @@ func fire_bullet():
 	await get_tree().create_timer(fire_rate).timeout
 	can_fire = true
 
-# indefinitely loops whatever audio player is given to it
-func _on_loop_sound(player):
-	player.stream_paused = false
-	player.play()
-
 # increases or decreases the pitch of the engine sound based on our velocity 
 func update_audio_pitch():
 	min_pitch = 1.0
 	max_pitch = 2.0
 	var pitch_range = max_pitch - min_pitch
 	var speed_percent = linear_velocity.length() / max_speed
-	var num = (min_pitch + pitch_range * speed_percent)
-	#AudioController.update_engine_pitch(num)
-	#audio_player_engine.pitch_scale = min_pitch + pitch_range * speed_percent
+	audio_player_engine.pitch_scale = min_pitch + pitch_range * speed_percent
 
 # plays a random sound from the collision_sounds array
 func play_random_collision_sound():
-	AudioController.play_player_sfx(collisionStream, self.get_global_position())
+	AudioController.play_positional_sfx(collisionStream, self.get_global_position())
 	
 # Called whenever something touches our collision polygon(s)
 func _on_body_entered(body):

@@ -120,16 +120,9 @@ position = Vector2(23, 42)
 [node name="BulletPoint2" type="Node2D" parent="."]
 position = Vector2(21, -45)
 
-[node name="AudioStreamPlayer2D_Cannon" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
-stream = ExtResource("3_owgqh")
-volume_db = -25.0
-
 [node name="AudioStreamPlayer2D_Engine" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
 visible = false
 stream = ExtResource("4_yasu6")
 volume_db = -15.0
-
-[node name="AudioStreamPlayer2D_Collision" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
-stream = ExtResource("5_od7a5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

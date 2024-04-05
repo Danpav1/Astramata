@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmfldddcefddq"]
+[gd_scene load_steps=9 format=3 uid="uid://cmfldddcefddq"]
 
 [ext_resource type="FontFile" uid="uid://w70gpuk73i8n" path="res://Assets/Fonts/m5x7.ttf" id="1_34wuq"]
 [ext_resource type="Script" path="res://Scripts/UI/options_menu.gd" id="1_fnhyq"]
@@ -7,6 +7,20 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gfcln"]
 shader = ExtResource("1_jloor")
 shader_parameter/blur_amount = 2.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2ade"]
+bg_color = Color(1, 0.647059, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_citj1"]
+bg_color = Color(1, 0.647059, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_btaqc"]
 
@@ -60,6 +74,9 @@ text = "Music
 custom_minimum_size = Vector2(384, 16)
 layout_mode = 2
 size_flags_vertical = 2
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../SFX_Slider")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_e2ade")
 min_value = -20.0
 max_value = 20.0
 step = 4.0
@@ -79,6 +96,9 @@ text = "SFX"
 layout_mode = 2
 size_flags_vertical = 2
 tooltip_text = "Main Volume"
+focus_neighbor_top = NodePath("../Music_Slider")
+focus_neighbor_bottom = NodePath("../ApplyButton")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_citj1")
 min_value = -20.0
 max_value = 20.0
 step = 4.0
@@ -87,6 +107,8 @@ tick_count = 1
 
 [node name="ApplyButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../SFX_Slider")
+focus_neighbor_bottom = NodePath("../BackButton")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)
@@ -101,6 +123,8 @@ flat = true
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ApplyButton")
+focus_neighbor_bottom = NodePath("../Music_Slider")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 0.647059, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 0.647059, 0, 1)

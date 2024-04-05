@@ -15,7 +15,7 @@ func play_ui_sfx(stream: AudioStream):
 	add_child(instance)
 	instance.play()
 	
-func play_player_sfx(stream: AudioStream, position: Vector2):
+func play_positional_sfx(stream: AudioStream, position: Vector2):
 	var instance = AudioStreamPlayer2D.new()
 	instance.global_position = position
 	instance.stream = stream
@@ -23,12 +23,6 @@ func play_player_sfx(stream: AudioStream, position: Vector2):
 	instance.volume_db = sfx_volume_db
 	add_child(instance)
 	instance.play()
-	
-func play_looping_sfx(stream: AudioStream):
-	pass
-	
-func end_looping_sfx(stream: AudioStream):
-	stream.queue_free()
 	
 func remove_node(instance: AudioStreamPlayer2D):
 	instance.queue_free()

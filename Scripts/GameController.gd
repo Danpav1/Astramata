@@ -141,6 +141,7 @@ func _open_death_menu():
 	show_death_menu()
 	death_menu.focus()
 	is_death_menu_visible = true
+	remove_player()
 
 func _on_go_main():
 	AudioController.play_ui_sfx(selectStream)
