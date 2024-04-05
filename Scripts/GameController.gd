@@ -8,11 +8,11 @@ var is_death_menu_visible = false
 var is_options_menu_visible = false
 
 # References to scenes (preloaded)
-var main_menu_scene = preload("res://Scenes/main_menu.tscn")
-var pause_menu_scene = preload("res://Scenes/pause_menu.tscn")
-var options_menu_scene = preload("res://Scenes/options_menu.tscn")
-var death_menu_scene = preload("res://Scenes/death_menu.tscn")
-var player_scene = preload("res://Scenes/player.tscn")
+var main_menu_scene = preload("res://Scenes/UI/main_menu.tscn")
+var pause_menu_scene = preload("res://Scenes/UI/pause_menu.tscn")
+var options_menu_scene = preload("res://Scenes/UI/options_menu.tscn")
+var death_menu_scene = preload("res://Scenes/UI/death_menu.tscn")
+var player_scene = preload("res://Scenes/Gameplay/Entities/Player/player.tscn")
 
 # UI Layers
 var ui_layer_main_menu

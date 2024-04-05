@@ -1,0 +1,68 @@
+[gd_scene load_steps=15 format=3 uid="uid://cv3fqnnlew856"]
+
+[ext_resource type="Texture2D" uid="uid://6n8rlbwfqayx" path="res://Assets/Graphics/Sprites/Explosion_section_1.png" id="1_ny2va"]
+[ext_resource type="Texture2D" uid="uid://c4lkbjvebhs54" path="res://Assets/Graphics/Sprites/Explosion_section_2.png" id="2_5vbyu"]
+[ext_resource type="Texture2D" uid="uid://e4abvosj82gf" path="res://Assets/Graphics/Sprites/Explosion_section_3.png" id="3_3bq7j"]
+[ext_resource type="Texture2D" uid="uid://doa6n1lmvoa6i" path="res://Assets/Graphics/Sprites/Explosion_section_4.png" id="4_n3juv"]
+[ext_resource type="Texture2D" uid="uid://babojpavuudun" path="res://Assets/Graphics/Sprites/Explosion_section_5.png" id="5_uxj5g"]
+[ext_resource type="Texture2D" uid="uid://d0fea8gshd6re" path="res://Assets/Graphics/Sprites/Explosion_section_6.png" id="6_sqv5q"]
+[ext_resource type="Texture2D" uid="uid://csc02yd3mr7ro" path="res://Assets/Graphics/Sprites/Explosion_section_7.png" id="7_ehs24"]
+[ext_resource type="Texture2D" uid="uid://bupcfjpub7npm" path="res://Assets/Graphics/Sprites/Explosion_section_8.png" id="8_s62tk"]
+[ext_resource type="Texture2D" uid="uid://xetjvmxfu2ki" path="res://Assets/Graphics/Sprites/Explosion_section_9.png" id="9_s7ay2"]
+[ext_resource type="Texture2D" uid="uid://baierxq66yy8p" path="res://Assets/Graphics/Sprites/Explosion_section_10.png" id="10_xvnd5"]
+[ext_resource type="Texture2D" uid="uid://b6dvr6qi7r241" path="res://Assets/Graphics/Sprites/Explosion_section_11.png" id="11_k5qwu"]
+[ext_resource type="Texture2D" uid="uid://mptt6re5tfli" path="res://Assets/Graphics/Sprites/Explosion_section_12.png" id="12_s83mh"]
+[ext_resource type="Script" path="res://Scripts/Entities/Projectiles/bullet_exposion.gd" id="13_0d4u1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rfjbu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ny2va")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5vbyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3bq7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n3juv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uxj5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sqv5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ehs24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s62tk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s7ay2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xvnd5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_k5qwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_s83mh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="bullet_explosion" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_rfjbu")
+autoplay = "default"
+frame = 1
+speed_scale = 4.0
+script = ExtResource("13_0d4u1")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
