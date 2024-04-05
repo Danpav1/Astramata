@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://durbvhgdgv557"
-path="res://.godot/imported/astromata.png-16acc4700110eaeb52cb2713f2d57dbc.ctex"
+path="res://.godot/imported/astromata.png-c6cc3a54e4091d0edfe16050dc15da03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Graphics/Sprites/astromata.png"
-dest_files=["res://.godot/imported/astromata.png-16acc4700110eaeb52cb2713f2d57dbc.ctex"]
+source_file="res://Assets/Graphics/UI/astromata.png"
+dest_files=["res://.godot/imported/astromata.png-c6cc3a54e4091d0edfe16050dc15da03.ctex"]
 
 [params]
 

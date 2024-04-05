@@ -60,9 +60,9 @@ text = "Music
 custom_minimum_size = Vector2(384, 16)
 layout_mode = 2
 size_flags_vertical = 2
-min_value = -80.0
+min_value = -20.0
 max_value = 20.0
-step = 10.0
+step = 4.0
 value = 20.0
 
 [node name="SFXLabel" type="Label" parent="VBoxContainer"]
@@ -79,9 +79,9 @@ text = "SFX"
 layout_mode = 2
 size_flags_vertical = 2
 tooltip_text = "Main Volume"
-min_value = -80.0
+min_value = -20.0
 max_value = 20.0
-step = 10.0
+step = 4.0
 value = 20.0
 tick_count = 1
 

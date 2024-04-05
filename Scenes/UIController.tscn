@@ -1,26 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://byoxsdleuhmdk"]
+[gd_scene load_steps=5 format=3 uid="uid://byoxsdleuhmdk"]
 
 [ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_3tkqq"]
-[ext_resource type="AudioStream" uid="uid://bfpxx4jwsoij5" path="res://Assets/Sounds/SFX/click_002.ogg" id="2_1nnwa"]
-[ext_resource type="AudioStream" uid="uid://l7668ngo4ctf" path="res://Assets/Sounds/SFX/click_001.ogg" id="2_eccy8"]
-[ext_resource type="AudioStream" uid="uid://bolv43tshyy2o" path="res://Assets/Sounds/SFX/click_003.ogg" id="4_nfogb"]
-[ext_resource type="AudioStream" uid="uid://upjewmabipi" path="res://Assets/Sounds/SFX/click_004.ogg" id="5_rbqt5"]
-[ext_resource type="AudioStream" uid="uid://d4c0b6kfcwjf3" path="res://Assets/Sounds/SFX/click_005.ogg" id="6_306ri"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kswrc"]
-streams_count = 5
-stream_0/stream = ExtResource("2_eccy8")
-stream_0/weight = 1.0
-stream_1/stream = ExtResource("2_1nnwa")
-stream_1/weight = 1.0
-stream_2/stream = ExtResource("4_nfogb")
-stream_2/weight = 1.0
-stream_3/stream = ExtResource("5_rbqt5")
-stream_3/weight = 1.0
-stream_4/stream = ExtResource("6_306ri")
-stream_4/weight = 1.0
+[ext_resource type="AudioStream" uid="uid://mn268ura0p55" path="res://Assets/Sounds/SFX/UI/drop_002.ogg" id="2_fs4xk"]
+[ext_resource type="AudioStream" uid="uid://bolv43tshyy2o" path="res://Assets/Sounds/SFX/UI/click_003.ogg" id="3_nmfqs"]
+[ext_resource type="AudioStream" uid="uid://dpqptq4iu7s0p" path="res://Assets/Sounds/SFX/UI/back_002.ogg" id="4_gruai"]
 
 [node name="GameController" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_3tkqq")
-stream = SubResource("AudioStreamRandomizer_kswrc")
+focusStream = ExtResource("2_fs4xk")
+selectStream = ExtResource("3_nmfqs")
+backStream = ExtResource("4_gruai")
