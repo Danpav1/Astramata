@@ -109,6 +109,7 @@ stream = ExtResource("3_owgqh")
 volume_db = -25.0
 
 [node name="AudioStreamPlayer2D_Engine" type="AudioStreamPlayer2D" parent="." groups=["sfx"]]
+visible = false
 stream = ExtResource("4_yasu6")
 volume_db = -15.0
 

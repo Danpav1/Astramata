@@ -32,6 +32,8 @@ var player_instance
 # Other vars
 var back_destination
 
+@export var stream: AudioStream
+
 func _ready():
 	init_menus()
 	show_main_menu()
@@ -39,12 +41,14 @@ func _ready():
 func _process(delta):
 	if not is_main_menu_visible and not is_death_menu_visible and not is_options_menu_visible:
 		if Input.is_action_just_pressed("ui_escape"):
+			AudioController.play_sound(stream)
 			if is_pause_menu_visible == true:
 				hide_pause_menu()
 			else:
 				show_pause_menu()
 	if is_options_menu_visible:
 		if Input.is_action_just_pressed("ui_escape"):
+			AudioController.play_sound(stream)
 			_on_go_back()
 
 func init_menus():
@@ -73,6 +77,8 @@ func init_menus():
 	options_menu.hide()
 	# Connections for options menu signals
 	options_menu.connect("go_back", _on_go_back)
+	options_menu.connect("apply_changes", _on_apply_changes)
+	options_menu.connect("slider_moved", _on_slider_moved)
 	
 	death_menu = death_menu_scene.instantiate()
 	ui_layer_death_menu = get_node("/root/main/CanvasLayerDeathMenu")
@@ -83,13 +89,23 @@ func init_menus():
 	death_menu.connect("go_main", _on_go_main)
 	death_menu.connect("quit_game", _on_quit_game)
 
+func _on_slider_moved():
+	AudioController.play_sound(stream)
+
+func _on_apply_changes(music_volume_db, sfx_volume_db):
+	AudioController.play_sound(stream)
+	AudioController.set_music_volume(music_volume_db)
+	AudioController.set_sfx_volume(sfx_volume_db)
+
 func _on_respawn_player():
+	AudioController.play_sound(stream)
 	hide_death_menu()
 	remove_player()
 	spawn_player()
 	is_death_menu_visible = false
 
 func _on_go_back():
+	AudioController.play_sound(stream)
 	hide_options()
 	if back_destination == "main_menu":
 		show_main_menu()
@@ -99,6 +115,7 @@ func _on_go_back():
 		back_destination = ""		
 	
 func _on_quit_game():
+	AudioController.play_sound(stream)
 	get_tree().quit()
 
 func _open_death_menu():
@@ -107,19 +124,25 @@ func _open_death_menu():
 	is_death_menu_visible = true
 
 func _on_go_main():
+	AudioController.play_sound(stream)
 	hide_death_menu() # if its shown
 	hide_pause_menu() # if its shown
 	remove_player()
 	show_main_menu()
+	is_death_menu_visible = false
+	is_pause_menu_visible = false
 
 func _on_resume_game():
+	AudioController.play_sound(stream)
 	hide_pause_menu()
 
 func _on_start_game():
+	AudioController.play_sound(stream)
 	hide_main_menu()
 	spawn_player()
 
 func _on_show_options_from_main():
+	AudioController.play_sound(stream)
 	back_destination = "main_menu"
 	hide_main_menu()
 	options_menu.show()
@@ -127,6 +150,7 @@ func _on_show_options_from_main():
 	is_options_menu_visible = true
 	
 func _on_show_options_from_pause():
+	AudioController.play_sound(stream)
 	back_destination = "pause_menu"
 	hide_pause_menu()
 	set_pause_state(true)

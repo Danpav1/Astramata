@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-@onready var audio_player_engine = $AudioStreamPlayer2D_Engine
 @onready var audio_player_cannon = $AudioStreamPlayer2D_Cannon
 @onready var audio_player_collision = $AudioStreamPlayer2D_Collision
 @onready var camera = $Camera2D
@@ -37,8 +36,6 @@ var collision_sounds = [
 # Called when the scene is first instantiated
 func _ready():
 	main_instance = main_scene
-	audio_player_engine.connect("finished", Callable(self, "_on_loop_sound").bind(audio_player_engine))
-	audio_player_engine.play()
 
 # Makes sure we're at the correct pixel size and camera zoom level, called every frame update
 # (16 per sec)
@@ -52,6 +49,7 @@ func _physics_process(delta):
 	handle_rotation(delta)
 	handle_movement(delta)
 	update_audio_pitch()
+	#AudioController.set_engine_sound_player_position(self.get_global_position())
 
 # Applies pixelate shader
 func pixelate(delta):
@@ -143,7 +141,9 @@ func update_audio_pitch():
 	max_pitch = 2.0
 	var pitch_range = max_pitch - min_pitch
 	var speed_percent = linear_velocity.length() / max_speed
-	audio_player_engine.pitch_scale = min_pitch + pitch_range * speed_percent
+	var num = (min_pitch + pitch_range * speed_percent)
+	#AudioController.update_engine_pitch(num)
+	#audio_player_engine.pitch_scale = min_pitch + pitch_range * speed_percent
 
 # plays a random sound from the collision_sounds array
 func play_random_collision_sound():
