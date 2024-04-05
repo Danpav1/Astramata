@@ -29,6 +29,7 @@ var death_menu
 # Other instances
 var player_instance
 
+# Other vars
 var back_destination
 
 func _ready():
@@ -44,7 +45,7 @@ func _process(delta):
 				show_pause_menu()
 	if is_options_menu_visible:
 		if Input.is_action_just_pressed("ui_escape"):
-			_go_back()
+			_on_go_back()
 
 func init_menus():
 	main_menu = main_menu_scene.instantiate()
@@ -63,7 +64,7 @@ func init_menus():
 	# Connections for pause menu signals
 	pause_menu.connect("resume_game", _on_resume_game)
 	pause_menu.connect("show_options", _on_show_options_from_pause)
-	pause_menu.connect("go_main", _recreate_main_scene)
+	pause_menu.connect("go_main", _on_go_main)
 	pause_menu.connect("quit_game", _on_quit_game)
 
 	options_menu = options_menu_scene.instantiate()
@@ -71,25 +72,24 @@ func init_menus():
 	ui_layer_options_menu.add_child(options_menu)
 	options_menu.hide()
 	# Connections for options menu signals
-	options_menu.connect("go_back", _go_back)
-	options_menu.connect("apply_changes", _apply_changes)
+	options_menu.connect("go_back", _on_go_back)
 	
 	death_menu = death_menu_scene.instantiate()
 	ui_layer_death_menu = get_node("/root/main/CanvasLayerDeathMenu")
 	ui_layer_death_menu.add_child(death_menu)
 	death_menu.hide()
 	# Connections for death menu signals
-	death_menu.connect("respawn_player", _respawn_player)
-	death_menu.connect("go_main", _recreate_main_scene)
+	death_menu.connect("respawn_player", _on_respawn_player)
+	death_menu.connect("go_main", _on_go_main)
 	death_menu.connect("quit_game", _on_quit_game)
 
-func _respawn_player():
+func _on_respawn_player():
 	hide_death_menu()
 	remove_player()
 	spawn_player()
 	is_death_menu_visible = false
 
-func _go_back():
+func _on_go_back():
 	hide_options()
 	if back_destination == "main_menu":
 		show_main_menu()
@@ -97,9 +97,6 @@ func _go_back():
 	if back_destination == "pause_menu":
 		show_pause_menu()
 		back_destination = ""		
-	
-func _apply_changes():
-	pass
 	
 func _on_quit_game():
 	get_tree().quit()
@@ -109,7 +106,7 @@ func _open_death_menu():
 	death_menu.focus()
 	is_death_menu_visible = true
 
-func _recreate_main_scene():
+func _on_go_main():
 	hide_death_menu() # if its shown
 	hide_pause_menu() # if its shown
 	remove_player()

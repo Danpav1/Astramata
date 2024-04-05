@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameController="*res://Scenes/GameController.tscn"
+UIController="*res://Scenes/UIController.tscn"
+AudioController="*res://Scenes/AudioController.tscn"
 
 [display]
 

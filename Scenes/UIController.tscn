@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://byoxsdleuhmdk"]
 
-[ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_mr3np"]
+[ext_resource type="Script" path="res://Scripts/GameController.gd" id="1_3tkqq"]
 
 [node name="GameController" type="Node2D"]
 process_mode = 3
-script = ExtResource("1_mr3np")
+script = ExtResource("1_3tkqq")

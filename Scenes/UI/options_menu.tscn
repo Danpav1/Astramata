@@ -60,7 +60,10 @@ text = "Music
 custom_minimum_size = Vector2(384, 16)
 layout_mode = 2
 size_flags_vertical = 2
-value = 50.0
+min_value = -80.0
+max_value = 20.0
+step = 10.0
+value = 20.0
 
 [node name="SFXLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -76,7 +79,10 @@ text = "SFX"
 layout_mode = 2
 size_flags_vertical = 2
 tooltip_text = "Main Volume"
+min_value = -80.0
+max_value = 20.0
 step = 10.0
+value = 20.0
 tick_count = 1
 
 [node name="ApplyButton" type="Button" parent="VBoxContainer"]
@@ -106,7 +112,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_61wq2")
 text = "Back"
 flat = true
 
-[connection signal="changed" from="VBoxContainer/SFX_Slider" to="." method="_on_sfx_slider_changed"]
+[connection signal="value_changed" from="VBoxContainer/Music_Slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SFX_Slider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="focus_entered" from="VBoxContainer/ApplyButton" to="." method="_on_apply_button_focus_entered"]
 [connection signal="mouse_entered" from="VBoxContainer/ApplyButton" to="." method="_on_apply_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/ApplyButton" to="." method="_on_apply_button_pressed"]

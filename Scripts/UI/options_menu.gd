@@ -1,12 +1,17 @@
 extends Control
 
 signal go_back
-signal apply_changes
 
 var focused_button
+var music_volume_db
+var sfx_volume_db
 
 func _ready():
 	focused_button = $VBoxContainer/ApplyButton
+	music_volume_db = AudioController.get_music_volume_db()
+	sfx_volume_db = AudioController.get_sfx_volume_db()
+	$VBoxContainer/Music_Slider.value = music_volume_db
+	$VBoxContainer/SFX_Slider.value = sfx_volume_db
 	focus()
 
 # sets the curr keyboard_focused to focus
@@ -16,7 +21,8 @@ func focus():
 
 # apply button
 func _on_apply_button_pressed():
-	emit_signal("apply_changes")
+	AudioController.set_music_volume(music_volume_db)
+	AudioController.set_sfx_volume(sfx_volume_db)
 
 # apply button hovering
 func _on_apply_button_mouse_entered():
@@ -37,5 +43,11 @@ func _on_back_button_mouse_entered():
 # back button focused
 func _on_back_button_focus_entered():
 	focused_button = $VBoxContainer/BackButton
-	
 
+# Music slider changes
+func _on_music_slider_value_changed(value):
+	music_volume_db = value
+	
+# SFX slider changes
+func _on_sfx_slider_value_changed(value):
+	sfx_volume_db = value
