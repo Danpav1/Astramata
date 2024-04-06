@@ -1,6 +1,6 @@
 # Astromata
 
-Welcome to **Astromata**, a game developed using the Godot 4.2.1 engine. Astromata is a work in progress.
+Welcome to **Astromata**, a game developed using the Godot 4.2.1 engine. Astromata is a work in progress. I want the game to be a marriage between Rimworld, Starbound and Stardew Valley.
 
 ## Getting Started
 
