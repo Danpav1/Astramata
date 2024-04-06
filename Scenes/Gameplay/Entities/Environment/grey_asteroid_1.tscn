@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ppv2qhbvbudu"]
+[gd_scene load_steps=3 format=3 uid="uid://enerxxnrd2q0"]
 
-[ext_resource type="Texture2D" uid="uid://bgqmis4g4svv6" path="res://Sprites/asteroid_vector_1.png" id="1_cgcda"]
+[ext_resource type="Texture2D" uid="uid://bgqmis4g4svv6" path="res://Assets/Graphics/Sprites/Environment/asteroid_vector_1.png" id="1_cgcda"]
+[ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="2_frtjc"]
 
-[node name="grey_asteroid_1" type="RigidBody2D"]
+[node name="grey_asteroid_1" type="RigidBody2D" groups=["asteroids"]]
 gravity_scale = 0.0
 max_contacts_reported = 10
 contact_monitor = true
@@ -14,3 +15,7 @@ polygon = PackedVector2Array(-84, -102, -65, -107, 2, -110, 64, -104, 78, -94, 9
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_cgcda")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("2_frtjc")
+MAX_HEALTH = 100.0

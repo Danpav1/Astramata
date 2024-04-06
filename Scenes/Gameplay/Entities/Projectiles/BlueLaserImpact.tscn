@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://d23pi6n1vte00"]
+
+[ext_resource type="Texture2D" uid="uid://bu6omp6c1ha6d" path="res://Assets/Graphics/Sprites/Projectiles/Impact Animations/BlueLaser/star1.png" id="1_pbldl"]
+[ext_resource type="Texture2D" uid="uid://caydnweow557w" path="res://Assets/Graphics/Sprites/Projectiles/Impact Animations/BlueLaser/star2.png" id="2_mjs33"]
+[ext_resource type="Texture2D" uid="uid://cnx55mnl6d2aq" path="res://Assets/Graphics/Sprites/Projectiles/Impact Animations/BlueLaser/star3.png" id="3_qh3lf"]
+[ext_resource type="Script" path="res://Scripts/Entities/Projectiles/BlueLaserImpact.gd" id="4_abdc7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ic8u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pbldl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mjs33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qh3lf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="BlueLaserImpact" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_0ic8u")
+autoplay = "default"
+frame_progress = 0.507315
+script = ExtResource("4_abdc7")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

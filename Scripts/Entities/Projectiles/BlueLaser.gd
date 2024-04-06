@@ -1,9 +1,9 @@
 extends RigidBody2D
 
-var explosion = preload("res://Scenes/Gameplay/Entities/Projectiles/bullet_exposion.tscn")
-var damage = 50.0
-var speed = 900.0
-var fire_rate = 1.0
+var explosion = preload("res://Scenes/Gameplay/Entities/Projectiles/BlueLaserImpact.tscn")
+var damage = 10.0
+var speed = 1500.0
+var fire_rate = 0.1
 
 func _on_body_entered(body):
 	var health_node = body.get_node_or_null("HealthComponent")

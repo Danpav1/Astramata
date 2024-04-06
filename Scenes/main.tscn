@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dulq1evu0kleu"]
 
 [ext_resource type="Shader" path="res://Shaders/pixelated.gdshader" id="1_dc6jn"]
-[ext_resource type="Texture2D" uid="uid://br5labwc5xady" path="res://Assets/Graphics/Sprites/space.png" id="2_3tom6"]
+[ext_resource type="Texture2D" uid="uid://br5labwc5xady" path="res://Assets/Graphics/Sprites/Environment/space.png" id="2_3tom6"]
 
 [sub_resource type="GDScript" id="GDScript_0ok7y"]
 script/source = "extends Node2D

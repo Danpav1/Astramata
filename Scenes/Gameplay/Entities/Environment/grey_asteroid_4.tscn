@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://caomcch1o0tos"]
+[gd_scene load_steps=3 format=3 uid="uid://caomcch1o0tos"]
 
-[ext_resource type="Texture2D" uid="uid://dkr8w83dx6x1w" path="res://Sprites/asteroid_vector_4.png" id="1_0a6dr"]
+[ext_resource type="Texture2D" uid="uid://dkr8w83dx6x1w" path="res://Assets/Graphics/Sprites/Environment/asteroid_vector_4.png" id="1_0a6dr"]
+[ext_resource type="PackedScene" uid="uid://nn3q7hc8xawe" path="res://Scenes/Gameplay/health_component.tscn" id="2_22xod"]
 
 [node name="grey_asteroid_4" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -14,3 +15,6 @@ polygon = PackedVector2Array(-76, -91, -21, -84, 37, -68, 63, -66, 120, -40, 135
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0a6dr")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_22xod")]
+MAX_HEALTH = 100.0

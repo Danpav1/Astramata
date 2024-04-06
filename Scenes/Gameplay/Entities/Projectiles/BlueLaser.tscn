@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca1o4pj2hqh4k"]
+
+[ext_resource type="Texture2D" uid="uid://bxkrrygbq4oti" path="res://Assets/Graphics/Sprites/Projectiles/laserBlue01.png" id="1_0g117"]
+[ext_resource type="Script" path="res://Scripts/Entities/Projectiles/BlueLaser.gd" id="1_5idkp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8x2y"]
+size = Vector2(6.66667, 53.3333)
+
+[node name="BlueLaser" type="RigidBody2D" groups=["projectile"]]
+rotation = 1.5708
+disable_mode = 2
+mass = 20.0
+gravity_scale = 0.0
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("1_5idkp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_0g117")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_c8x2y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
